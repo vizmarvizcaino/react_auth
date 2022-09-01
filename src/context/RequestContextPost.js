@@ -25,16 +25,18 @@ export const RequestContextPostProvider = (props) => {
 
   function login() {
     axios.post(`${baseUrl}/auth/login`, values)
-      .then(res=> res.data.token)
+      .then(res => res.data.token)
       .then(token => {
         setToken(token)
         setLogged(true)
       })
+      .catch(err => console.log(err));
   }
 
 
   function submit(e) {
     e.preventDefault();
+    console.log('submit');
     login();
   }
     
