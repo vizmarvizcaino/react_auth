@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { RequestContextPost } from "./context/RequestContextPost";
 import { RequestContextPostProvider } from "./context/RequestContextPost";
 import './App.css';
@@ -7,20 +7,20 @@ import Welcome from './compnents/PeticionGet';
 
 
 function App() {
-  const logged  = useContext(RequestContextPost)
+  const { logged } = useContext(RequestContextPost)
 
-  console.log(logged)
+  useEffect(() => {
+    console.log(logged);
+  });
 
   return (
-    
-    <RequestContextPostProvider>
-      <div className="App">
-        <h1>Ejercicio en clase utilizando useContext ('contiene error')</h1>
-        {
-         logged ? <Welcome/> : <Form />
-        }
-      </div>
-    </RequestContextPostProvider>
+
+    <div className="App">
+      <h1>Ejercicio en clase utilizando useContext ('contiene error')</h1>
+      {
+        logged ? <Welcome/> : <Form />
+      }
+    </div>
   )
 }
 export default App;
